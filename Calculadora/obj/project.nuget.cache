@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "PGskDnXatuePd8J4n9SuNNdJBhiJkmmPudLfsN2LVf+busc+PeJbYVkupiz/eLEs0sJiZio6A1iVDV2jYzmP+A==",
+  "dgSpecHash": "vNSoKS3TMXHF6CRteJ6wYzCnWm/0uQMndaYIphkQDSkoehkMstEabWyaM4hBEOggoePJJL7Nxyv+eD2htnHEcA==",
   "success": true,
   "projectFilePath": "D:\\_lab\\Calculadora\\Calculadora\\Calculadora.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\joaop\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\joaop\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\joaop\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
+    "C:\\Users\\joaop\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512"
+  ],
   "logs": []
 }

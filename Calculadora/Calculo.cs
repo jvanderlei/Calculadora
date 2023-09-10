@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Calculadora
 {
-    public class Operacoes
+    public class Calculo
     {
         public long ValorA {get;set;}
         public char Operador { get; set; }

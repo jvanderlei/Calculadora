@@ -1,37 +1,29 @@
-﻿using System;
+﻿using Calculadora.Interfaces;
+using Calculadora.Operacoes;
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+
 namespace Calculadora
 {
     public class Calculadora
     {
-        
-        public Operacoes Calcular(Operacoes operacao)
+
+        public void Calcular(Calculo calculo)
         {
-            switch(operacao.Operador)
-            {
-                case '+': operacao.Resultado= Soma(operacao);break;
-                case '-': operacao.Resultado = Subtracao(operacao);break;
-                case '*': operacao.Resultado = Multiplicacao(operacao);break;
-                case '/': operacao.Resultado = Divisao(operacao); break;
-                default: operacao.Resultado = 0; break;
-            }
-            return operacao;
+            if(operadores.TryGetValue(calculo.Operador, out IOperacao operacao)){
+                calculo.Resultado = operacao.Execute(calculo.ValorA, calculo.ValorB);
+            } 
         }
-        public long Soma(Operacoes operacao)
+
+
+        Dictionary<Char, IOperacao> operadores = new Dictionary<Char, IOperacao>
         {
-            return operacao.ValorA + operacao.ValorB;
-        }
-        public long Subtracao(Operacoes operacao)
-        {
-            return operacao.ValorA - operacao.ValorB;
-        }
-        public long Multiplicacao(Operacoes operacao)
-        {
-            return operacao.ValorA * operacao.ValorB;
-        }
-        public long Divisao(Operacoes operacao)
-        {
-            return operacao.ValorA / operacao.ValorB;
-        }
+            {'+', new SomaOperacao() },
+            {'-', new SubtracaoOperacao() },
+            {'*', new MultiplicacaoOperacao() },
+            {'/', new DivisaoOperacao() }
+        };
 
     }
 }
