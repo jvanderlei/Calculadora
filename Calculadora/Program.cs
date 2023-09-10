@@ -30,19 +30,19 @@ namespace Calculadora
                 if (!filaOperacoes.Count.Equals(0))
                 {
                     Console.WriteLine($"\nCalculos a serem processados:");
-                    IterateQueue(filaOperacoes);
+                    printEnumerables(filaOperacoes);
                 }
             }
             Console.WriteLine($"\nCalculos feitos:");
-            IterateQueue(filaResultadoOperacoes);
+            printEnumerables(filaResultadoOperacoes);
 
 
 
             Console.WriteLine();
 
-            void IterateQueue(IEnumerable<Operacoes> queue)
+            void printEnumerables(IEnumerable<Operacoes> enumerable)
             {
-                foreach (Operacoes operacao in queue)
+                foreach (Operacoes operacao in enumerable)
                 {
                     Console.Write($"{operacao.ValorA} {operacao.Operador} {operacao.ValorB}");
                     if (!operacao.Resultado.Equals(0))
