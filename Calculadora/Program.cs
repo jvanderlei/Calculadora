@@ -9,24 +9,52 @@ namespace Calculadora
         static void Main(string[] args)
         {
             Queue<Operacoes> filaOperacoes = new Queue<Operacoes>();
-            filaOperacoes.Enqueue(new Operacoes { valorA = 2, valorB = 3, operador = '+' });
-            filaOperacoes.Enqueue(new Operacoes { valorA = 14, valorB = 8, operador = '-' });
-            filaOperacoes.Enqueue(new Operacoes { valorA = 5, valorB = 6, operador = '*' });
-            filaOperacoes.Enqueue(new Operacoes { valorA = 2147483647, valorB = 2, operador = '+' });
-            filaOperacoes.Enqueue(new Operacoes { valorA = 18, valorB = 3, operador = '/' }); //Implemente o calculo de divisao
+            filaOperacoes.Enqueue(new Operacoes { ValorA = 2, ValorB = 3, Operador = '+' });
+            filaOperacoes.Enqueue(new Operacoes { ValorA = 14, ValorB = 8, Operador = '-' });
+            filaOperacoes.Enqueue(new Operacoes { ValorA = 5, ValorB = 6, Operador = '*' });
+            filaOperacoes.Enqueue(new Operacoes { ValorA = 2147483647, ValorB = 2, Operador = '+' });
+            filaOperacoes.Enqueue(new Operacoes { ValorA = 18, ValorB = 3, Operador = '/' }); //Implemente o calculo de divisao
+            Stack<Operacoes> filaResultadoOperacoes = new Stack<Operacoes>();
 
-            Calculadora calculadora = new Calculadora();
+
+            Calculadora calculadora = new();
 
             
-            while (filaOperacoes.Count >= 0)
+            
+            while (filaOperacoes.Count > 0)
             {
-                Operacoes operacao = filaOperacoes.Peek();
-                calculadora.calcular(operacao);
-                Console.WriteLine("{0} {1} {2} = {3}", operacao.valorA,operacao.operador,operacao.valorB, operacao.resultado);
+                Operacoes operacao = filaOperacoes.Dequeue();
+                calculadora.Calcular(operacao);
+                filaResultadoOperacoes.Push(operacao);
+                Console.WriteLine("{0} {1} {2} = {3}", operacao.ValorA, operacao.Operador, operacao.ValorB, operacao.Resultado);
+                if (!filaOperacoes.Count.Equals(0))
+                {
+                    Console.WriteLine($"\nCalculos a serem processados:");
+                    IterateQueue(filaOperacoes);
+                }
+            }
+            Console.WriteLine($"\nCalculos feitos:");
+            IterateQueue(filaResultadoOperacoes);
+
+
+
+            Console.WriteLine();
+
+            void IterateQueue(IEnumerable<Operacoes> queue)
+            {
+                foreach (Operacoes operacao in queue)
+                {
+                    Console.Write($"{operacao.ValorA} {operacao.Operador} {operacao.ValorB}");
+                    if (!operacao.Resultado.Equals(0))
+                        Console.Write($" = {operacao.Resultado}");
+                    Console.WriteLine();
+                        
+                }
+                Console.WriteLine();
             }
 
-          
-           
         }
+
+      
     }
 }
